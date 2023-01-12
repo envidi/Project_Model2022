@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto",sans-serif;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.d-f {
+    display: flex;
+
+}
+
+.jf-c {
+    justify-content: center;
+
+}
+
+.al-c {
+    align-items: center;
+}
+
+.f-d {
+    flex-direction: column;
+}
+
+.jf-b {
+    justify-content: space-between;
+}
+.contain{
+    width: 100%;
+    padding: 0px 130px;
+    box-sizing: border-box;
+
+}
+.manage_website{
+    background-color: rgb(201, 157, 157);
+    padding: 20px 0px;
+}
+.navBar {
+    width: 100%;
+    background-color: black;
+}
+.navBar li{
+    list-style: none;
+    
+    height: 40px;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.navBar li a{
+    text-decoration: none;
+    color: white;
+
+}
+.navBar li a:hover{
+    font-size: large;
+    opacity: 0.7;
+}
+.add_new{
+    background-color: rgb(187, 237, 202);
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgb(26, 26, 26);
+}
+.id_category{
+    width: 100%;
+    padding: 10px 20px ;
+    background-color: rgb(222, 222, 222);
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid rgb(137, 137, 137);
+}
+form label{
+    margin-top: 10px ;
+    display: block;
+}
+form input{
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    border-radius: 4px;
+    border: 1px solid rgb(123, 123, 123);
+}
+.button_form{
+    display: flex;
+    gap: 10px;
+}
+.btn_name_category{
+    padding: 5px 10px;
+}
+.btn_name_category a{
+    text-decoration: none;
+    color: black;
+}
