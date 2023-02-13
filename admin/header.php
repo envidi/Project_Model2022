@@ -24,7 +24,7 @@
                     <li><a href="index.php">Trang chủ</a></li>
                     <li><a href="index.php?act=add_category">Danh mục</a></li>
                     <li><a href="index.php?act=add_product">Hàng hóa</a></li>
-                    <li><a href="index.php?act=customer_list">Khách hàng</a></li>
+                    <li><a href="index.php?act=list_customer">Khách hàng</a></li>
                     <li><a href="index.php?act=comment_list">Bình luận</a></li>
                     <li><a href="index.php?act=statistic">Thống kê</a></li>
                 </ul>

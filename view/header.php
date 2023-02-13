@@ -9,9 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/editAccount.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="./css/productDetail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Project Model</title>
 </head>
 
@@ -28,7 +30,7 @@
                 <div class="nav_menu">
                     <ul class="d-f">
                         <li>
-                            <a href="index.php">
+                            <a href="index.php?header=sign_in">
                                 Trang chủ
                             </a>
                         </li>
@@ -77,8 +79,59 @@
 
                 <div class="search d-f">
                     <form action="" class="d-f jf-c">
-                        <input class="input_serach" type="text" placeholder="Search">
-                        <button class="button_search">Search</button>
+
+                        <button class="button_search">
+                        <?php
+                            if (isset($info_user) && isset($info_password)) {
+                                $user = $info_user;
+                                $id = $info_id;
+                                $password = $info_password;
+                                $email = $info_email;
+                                $url_edit_account = "index.php?act=edit_account&&header=sign_in&&user=$user&&password=$password&&email=$email&&id=$id" ;
+                                $url_forget_password = "index.php?act=forget_password&&header=sign_in";
+                                $url_log_out = "index.php?act=log_out";
+                                $url_admin = "admin/index.php";
+
+                            ?>
+
+                                <div style="width:320px;height:60px;" class="d-f f-d info_user ">
+                                    <div style="font-weight: 600;font-size:18px">hello <?= $info_user ?></div>
+                                    <div class="d-f ">
+                                        <div>
+                                            <a href="<?= $url_forget_password ?>">
+                                            Quên mật khẩu
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="<?= $url_edit_account ?>">
+                                                Cập nhật tài khoản
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="<?= $url_admin ?>">
+                                                Đăng nhập admin
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="<?= $url_log_out ?>">
+                                                Đăng xuất
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+
+                            } else {
+                            ?>
+                                <a href="./view/account/login.php">
+                                    <?php echo  "Sign in" ?>
+                                </a>
+
+                            <?php   }
+                            ?>
+
+                            
+                        </button>
                     </form>
                 </div>
             </div>

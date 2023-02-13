@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="form_login" action="">
+        <h2>SIGN UP</h2>
+        <div class="mt d-f f-d">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            placeholder="Please enter your email"
+            id="email"
+            class="email"
+          />
+        </div>
+        <div class="mt mb d-f f-d">
+          <label for="pwd">Password</label>
+          <input
+            type="password"
+            placeholder="Please enter your password"
+            id="pwd1"
+            class="pwd"
+          />
+         
+         
+        </div>
+
+        <div class=" mb d-f f-d">
+            <label for="pwd">Password Again</label>
+            <input
+              type="password"
+              placeholder="Please enter your password"
+              id="pwd"
+              class="pwd"
+            />
+            <div class="d-f mt1">
+              <label class="mr" for="">Show Password</label>
+              <input type="checkbox" onclick="myFunction()" />
+            </div>
+           
+          </div>
+
+        <div class="sign-in">
+          <button class="btn_submit_sign-in" type="submit">Sign up</button>
+        </div>
+
+        <!-- <div class="d-f">
+          <div class="mr forget_pass">
+            <a href="">Forget password </a>
+          </div>
+          <div class="sign_in">
+            <a href="">Sign up</a>
+          </div>
+        </div> -->
+      </form>
+    </div>
+
+
+
+    <script>
+         function myFunction() {
+            var x = document.getElementById("pwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+

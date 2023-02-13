@@ -2,6 +2,8 @@
 include "../model/pdo.php";
 include "../model/category.php";
 include "../model/product.php";
+include "../model/account.php";
+include "../model/comment.php";
 include "header.php";
 
 if (isset($_GET['act'])) {
@@ -111,7 +113,7 @@ if (isset($_GET['act'])) {
             break;
         case 'update_product':
             $price = isset($_POST['price']) ? $_POST['price'] : "";
-       
+
             if (isset($_POST['update']) && ($_POST['update'])) {
                 $id = isset($_POST['id']) ? $_POST['id'] : 0;
                 $product_name = isset($_POST['product_name']) ? $_POST['product_name'] : "";
@@ -137,6 +139,114 @@ if (isset($_GET['act'])) {
             $category_name =  select_category_all();
 
             include "product/list.php";
+            break;
+        case 'list_customer':
+            if (isset($_POST['submit_filter_customer']) && $_POST['submit_filter_customer']) {
+
+                $keyword = $_POST['filter_customer'];
+                // $filter_category_id = $_POST['category_id'];
+            } else {
+                $keyword =  "";
+                $filter_category_id = 0;
+            }
+
+            $list_customer = select_customer_all($keyword);
+
+            include "account/list.php";
+            break;
+        case 'edit_customer':
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id > 0) {
+                $result = checkUserId($id);
+            }
+            //               
+
+            include "account/edit.php";
+            break;
+        case 'update_customer':
+
+            if (isset($_POST['update_customer']) && ($_POST['update_customer'])) {
+                $id = isset($_POST['id']) ? $_POST['id'] : 0;
+                $username = isset($_POST['username']) ? $_POST['username'] : "";
+                $email = isset($_POST['email']) ? $_POST['email'] : "";
+                $pass = isset($_POST['password']) ? $_POST['password'] : "";
+                $tele = isset($_POST['tele']) ? $_POST['tele'] : "";
+                $address = isset($_POST['address']) ? $_POST['address'] : "";
+                $role = isset($_POST['role']) ? $_POST['role'] : "";
+
+
+
+                update_customer($id, $username, $email, $pass, $tele, $address,$role);
+                $notify = "Update successfully";
+                $result = checkUserId($id);
+            }
+            else{
+                $notify = "Update failed";
+            }
+
+            
+
+            include "account/edit.php";
+            break;
+        case 'delete_customer':
+                $id = isset($_GET['id']) ? $_GET['id'] : 0;
+                if ($id > 0) {
+                    delete_customer($id);
+                }
+                $list_customer = select_customer_all("");               
+    
+                include "account/list.php";
+                break;
+        case 'add_customer':
+            $notify = "";
+            if (isset($_POST['add_customer']) && ($_POST['add_customer'])) {
+                
+                $username = isset($_POST['username']) ? $_POST['username'] : "";
+                $email = isset($_POST['email']) ? $_POST['email'] : "";
+                $password = isset($_POST['password']) ? $_POST['password'] : "";
+                $tele = isset($_POST['tele']) ? $_POST['tele'] : "";
+                $address = isset($_POST['address']) ? $_POST['address'] : "";
+                $role = isset($_POST['role']) ? $_POST['role'] : "";
+
+
+
+                insert_user_admin($email,$username,$password,$address,$tele,$role);
+                $notify = "Update successfully";
+                include "account/add.php";
+            }
+           
+            else{
+                include "account/add.php";
+            }                                          
+            break;
+        case 'comment_list':
+
+            if (isset($_POST['submit_filter_comment']) && $_POST['submit_filter_comment']) {
+
+                $keyword = $_POST['filter_comment'];
+                $filterUserName = checkUserFilter($keyword);
+                $idFilter = $filterUserName['id'];
+                // $filter_category_id = $_POST['category_id'];
+            } else {
+                $idFilter =  0;
+                
+            }
+
+            $list_comment = select_comment_list($idFilter);
+
+
+            include "comment/list.php";
+                break;
+        case 'delete_comment':
+
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id > 0) {
+                delete_comment($id);
+            }
+            
+            $list_comment = select_comment_list(0);               
+
+            include "comment/list.php";
             break;
         default:
             include "home.php";

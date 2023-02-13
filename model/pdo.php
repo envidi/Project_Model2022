@@ -34,6 +34,22 @@ function pdo_execute($sql){
     }
 }
 
+function pdo_execute_return_lastInsertId($sql){
+    $sql_args = array_slice(func_get_args(),1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $conn->lastInsertId();
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+
 //    Thực thi câu lệnh truy vấn dữ liệu sql SELECT
 /** 
 *@param string $sql câu lệnh sql 
