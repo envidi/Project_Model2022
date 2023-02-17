@@ -49,6 +49,8 @@
                 $special = $product_name[$i]['special'];
                 $view = $product_name[$i]['view'];
                 $category_id = $product_name[$i]['category_id'];
+                $category = select_category_one($category_id);
+                $category_name = $category['category_name'];
                 $url_delete = "index.php?act=delete_product&id=$id";
                 $url_edit = "index.php?act=edit_product&id=$id";
 
@@ -68,7 +70,7 @@
                     <td><?= $description ?></td>
                     <td><?= $special ?></td>
                     <td><?= $view ?></td>
-                    <td><?= $category_id ?></td>
+                    <td><?= $category_name ?></td>
                     <td>
                         <a href="<?= $url_edit ?>">
                             <button class="edit-category">EDIT</button>

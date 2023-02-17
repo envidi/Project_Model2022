@@ -1,7 +1,9 @@
 <?php
 include "../model/pdo.php";
 include "../model/category.php";
+include "../model/cart.php";
 include "../model/product.php";
+include "../model/statistic.php";
 include "../model/account.php";
 include "../model/comment.php";
 include "header.php";
@@ -112,7 +114,7 @@ if (isset($_GET['act'])) {
             include "product/update.php";
             break;
         case 'update_product':
-            $price = isset($_POST['price']) ? $_POST['price'] : "";
+
 
             if (isset($_POST['update']) && ($_POST['update'])) {
                 $id = isset($_POST['id']) ? $_POST['id'] : 0;
@@ -176,31 +178,30 @@ if (isset($_GET['act'])) {
 
 
 
-                update_customer($id, $username, $email, $pass, $tele, $address,$role);
+                update_customer($id, $username, $email, $pass, $tele, $address, $role);
                 $notify = "Update successfully";
                 $result = checkUserId($id);
-            }
-            else{
+            } else {
                 $notify = "Update failed";
             }
 
-            
+
 
             include "account/edit.php";
             break;
         case 'delete_customer':
-                $id = isset($_GET['id']) ? $_GET['id'] : 0;
-                if ($id > 0) {
-                    delete_customer($id);
-                }
-                $list_customer = select_customer_all("");               
-    
-                include "account/list.php";
-                break;
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id > 0) {
+                delete_customer($id);
+            }
+            $list_customer = select_customer_all("");
+
+            include "account/list.php";
+            break;
         case 'add_customer':
             $notify = "";
             if (isset($_POST['add_customer']) && ($_POST['add_customer'])) {
-                
+
                 $username = isset($_POST['username']) ? $_POST['username'] : "";
                 $email = isset($_POST['email']) ? $_POST['email'] : "";
                 $password = isset($_POST['password']) ? $_POST['password'] : "";
@@ -210,14 +211,12 @@ if (isset($_GET['act'])) {
 
 
 
-                insert_user_admin($email,$username,$password,$address,$tele,$role);
+                insert_user_admin($email, $username, $password, $address, $tele, $role);
                 $notify = "Update successfully";
                 include "account/add.php";
-            }
-           
-            else{
+            } else {
                 include "account/add.php";
-            }                                          
+            }
             break;
         case 'comment_list':
 
@@ -229,24 +228,87 @@ if (isset($_GET['act'])) {
                 // $filter_category_id = $_POST['category_id'];
             } else {
                 $idFilter =  0;
-                
             }
 
             $list_comment = select_comment_list($idFilter);
 
 
             include "comment/list.php";
-                break;
+            break;
         case 'delete_comment':
 
             $id = isset($_GET['id']) ? $_GET['id'] : 0;
             if ($id > 0) {
                 delete_comment($id);
             }
-            
-            $list_comment = select_comment_list(0);               
+
+            $list_comment = select_comment_list(0);
 
             include "comment/list.php";
+            break;
+        case 'listBill':
+
+            if (isset($_POST['submit_filter_bill']) && $_POST['submit_filter_bill']) {
+
+                $keyword = $_POST['filter_bill'];
+             
+                // $filter_category_id = $_POST['category_id'];
+            } else {
+                $keyword =  0;
+            }
+
+
+
+            $list_bill = select_bill_idUser(0,$keyword);
+
+            include "bill/list.php";
+            break;
+        case 'delete_bill':
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id > 0) {
+                delete_bill($id);
+            }
+            $list_bill = select_bill_idUser(0,0);
+            include "bill/list.php";
+            break;
+        
+        case 'edit_bill':
+            $id = isset($_GET['id']) ? $_GET['id'] : 0;
+            if ($id > 0) {
+                $result = select_bill_one($id);
+            }
+
+            include "bill/update.php";
+            break;
+        case 'update_bill':
+
+            if (isset($_POST['update']) && ($_POST['update'])) {
+                $id = isset($_POST['id']) ? $_POST['id'] : 0;
+                $customer_name = isset($_POST['customer_name']) ? $_POST['customer_name'] : "";
+                $total = isset($_POST['total']) ? $_POST['total'] : "";
+                $date = isset($_POST['date']) ? $_POST['date'] : "";
+                $status_bill = isset($_POST['status_bill']) ? $_POST['status_bill'] : 0;
+                
+
+                update_bill($id, $customer_name, $total, $date, $status_bill);
+                $notify = "Update successfully";
+            } else {
+                $notify = "Update failed";
+            }
+            $list_bill = select_bill_idUser(0,0);
+            include "bill/list.php";
+            break;
+        case 'statistic':
+                   
+            $list_statistic = list_statistic();
+        
+            include "statistic/statistic.php";
+            break;
+            
+        case 'chart_pie':
+                   
+            $list_statistic = list_statistic();  
+            include "statistic/chart.php";
             break;
         default:
             include "home.php";

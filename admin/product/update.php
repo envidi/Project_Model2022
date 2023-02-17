@@ -13,7 +13,7 @@ if (isset($result['product_name']) && isset($result['id'])) {
     $url_image = "../upload/";
     $image_name = $result['image'];
     $image = $url_image . $image_name;
-    var_dump($value_cate);
+    
 } else {
     $value_name = "Undefined name";
     $value_id = 0;

@@ -87,7 +87,7 @@ $total = isset($list_bill['total']) ? $list_bill['total'] : 0;
 
             </div>
             <?php
-            model_cart(0);
+          detail_cart($list_cart);
             ?>
 
 
@@ -96,14 +96,14 @@ $total = isset($list_bill['total']) ? $list_bill['total'] : 0;
 
 
 
-            <div class="button_form">
+            <!-- <div class="button_form">
 
                 <input type="submit" value="Đồng ý đặt hàng" class="order mt" name="order">
 
 
 
 
-            </div>
+            </div> -->
         </form>
 
     </div>

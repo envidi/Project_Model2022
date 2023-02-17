@@ -49,7 +49,7 @@
 
             <h3 class="bill_title">Phương thức thanh toán</h3>
             <div class="bill">
-                <input type="text" name="id" value="<?= $id ?>" hidden>
+                
                 <div class="d-f infor_bill">
                     <label class="label_bill" for="bill_user">Trả tiền khi nhận hàng</label>
                     <input class="input_bill" required type="radio" id="bill_user" checked  name="credit" value="1" placeholder>

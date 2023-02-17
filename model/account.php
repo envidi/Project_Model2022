@@ -15,7 +15,7 @@ function insert_user_admin($email,$name,$password,$address,$tele,$role)
 
 
 function checkUser($user,$pass){
-    $sql = "SELECT * FROM customer WHERE user = '$user' AND password = $pass";
+    $sql = "SELECT * FROM customer WHERE user = '$user' AND password = '$pass'";
    
     $result = pdo_query_one($sql);
  

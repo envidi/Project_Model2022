@@ -81,25 +81,31 @@
                     <form action="" class="d-f jf-c">
 
                         <button class="button_search">
-                        <?php
+                            <?php
                             if (isset($info_user) && isset($info_password)) {
                                 $user = $info_user;
                                 $id = $info_id;
                                 $password = $info_password;
                                 $email = $info_email;
-                                $url_edit_account = "index.php?act=edit_account&&header=sign_in&&user=$user&&password=$password&&email=$email&&id=$id" ;
+                                $url_edit_account = "index.php?act=edit_account&&header=sign_in&&user=$user&&password=$password&&email=$email&&id=$id";
                                 $url_forget_password = "index.php?act=forget_password&&header=sign_in";
                                 $url_log_out = "index.php?act=log_out";
                                 $url_admin = "admin/index.php";
+                                $url_my_cart = "index.php?act=mybill&&header=sign_in";
 
                             ?>
 
                                 <div style="width:320px;height:60px;" class="d-f f-d info_user ">
-                                    <div style="font-weight: 600;font-size:18px">hello <?= $info_user ?></div>
-                                    <div class="d-f ">
+                                    <div style="font-weight: 600;font-size:18px;width:100%;padding:0px 80px;box-sizing:border-box" class="d-f jf-b">Hello <?= $info_user ?>
+                                        <a style="text-decoration: none;color:blue" href="<?= $url_my_cart ?> " class="d-f">
+                                        cart
+                                           
+                                        </a>
+                                    </div>
+                                    <div class="d-f jf-b">
                                         <div>
                                             <a href="<?= $url_forget_password ?>">
-                                            Quên mật khẩu
+                                                Quên mật khẩu
                                             </a>
                                         </div>
                                         <div>
@@ -109,10 +115,16 @@
                                         </div>
                                         <div>
                                             <a href="<?= $url_admin ?>">
-                                                Đăng nhập admin
+                                                <?php if ($user == "admin") {
+                                                    echo " Đăng nhập admin";
+                                                } else {
+                                                    echo "";
+                                                }
+                                                ?>
+
                                             </a>
                                         </div>
-                                        <div>
+                                        <div >
                                             <a href="<?= $url_log_out ?>">
                                                 Đăng xuất
                                             </a>
@@ -123,14 +135,14 @@
 
                             } else {
                             ?>
-                                <a href="./view/account/login.php">
+                                <a style="padding:6px 10px;display:block" href="./view/account/login.php">
                                     <?php echo  "Sign in" ?>
                                 </a>
 
                             <?php   }
                             ?>
 
-                            
+
                         </button>
                     </form>
                 </div>

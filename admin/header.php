@@ -27,6 +27,7 @@
                     <li><a href="index.php?act=list_customer">Khách hàng</a></li>
                     <li><a href="index.php?act=comment_list">Bình luận</a></li>
                     <li><a href="index.php?act=statistic">Thống kê</a></li>
+                    <li><a href="index.php?act=listBill">Danh sách đơn hàng</a></li>
                 </ul>
 
             </div>

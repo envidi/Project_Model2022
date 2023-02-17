@@ -11,7 +11,8 @@
 
 <body>
     <div class="container">
-        <form class="form_login" action="save_login.php" method="POST">
+        <form class="form_login" style="width:
+        260px" action="save_login.php" method="POST">
             <h2>SIGN IN</h2>
 
             <div class="mt d-f f-d">
@@ -44,7 +45,7 @@
 
             <div class="d-f">
                 <div class="mr forget_pass">
-                    <a href="">Forget password </a>
+                    <a href="../../index.php?act=forget_password">Forget password </a>
                 </div>
                 <div class="sign_in">
                     <a href="sign_up.php">Sign up</a>

@@ -1,3 +1,9 @@
+<?php
+$email = isset($email ) ? $email : "";
+
+
+?>
+
 <div class="contain_product_sidebar w-100 d-f jf-b">
     <!-- ----contain product--- -->
     <div class="contain_product_main d-f jf-c al-t ">
